@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CodeIgniter
  *
@@ -37,6 +38,8 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require_once 'rb-postgres.php';
+
 /**
  * Application Controller Class
  *
@@ -51,53 +54,84 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class CI_Controller {
 
-	/**
-	 * Reference to the CI singleton
-	 *
-	 * @var	object
-	 */
-	private static $instance;
+    /**
+     * Reference to the CI singleton
+     *
+     * @var	object
+     */
+    private static $instance;
 
-	/**
-	 * CI_Loader
-	 *
-	 * @var	CI_Loader
-	 */
-	public $load;
+    /**
+     * CI_Loader
+     *
+     * @var	CI_Loader
+     */
+    public $load;
 
-	/**
-	 * Class constructor
-	 *
-	 * @return	void
-	 */
-	public function __construct()
-	{
-		self::$instance =& $this;
+    /**
+     * Class constructor
+     *
+     * @return	void
+     */
+    public function __construct() {
+        self::$instance = & $this;
 
-		// Assign all the class objects that were instantiated by the
-		// bootstrap file (CodeIgniter.php) to local class variables
-		// so that CI can run as one big super object.
-		foreach (is_loaded() as $var => $class)
-		{
-			$this->$var =& load_class($class);
-		}
+        // Assign all the class objects that were instantiated by the
+        // bootstrap file (CodeIgniter.php) to local class variables
+        // so that CI can run as one big super object.
+        foreach (is_loaded() as $var => $class) {
+            $this->$var = & load_class($class);
+        }
 
-		$this->load =& load_class('Loader', 'core');
-		$this->load->initialize();
-		log_message('info', 'Controller Class Initialized');
-	}
+        $this->load = & load_class('Loader', 'core');
+        $this->load->initialize();
+        log_message('info', 'Controller Class Initialized');
+        //Connection redbean
+        R::setup('pgsql:host=ruby.db.elephantsql.com;dbname=vjxctixa', 'vjxctixa', 'f5PgHdG62Ce8S1hB7TUE6F18QHbzpWmD');
+    }
 
-	// --------------------------------------------------------------------
+    public function indexview($data = null) {
+        $data['pages'] = [
+            0 => array(0 => 'Financeiro',
+                'subpages' => array(0 => array('name' => 'Contas a pagar', 'urlName' => 'contasapagar'),
+                    1 => array('name' => 'Contas a receber', 'urlName' => 'contasareceber'))
+            )
+        ];
+        $this->load->helper('html');
+        $this->load->helper('url');
+        
+        $data['controllerName'] = $this->router->fetch_class();
+        $this->load->view('home/index', $data);
+        $this->load->view($data['controllerName'] . '/' . $data['controllerName'], $data);
+        $this->load->view('home/footer', $data);
+    }
+    
+    public function createview($data = null) {
+        $data['pages'] = [
+            0 => array(0 => 'Financeiro',
+                'subpages' => array(0 => array('name' => 'Contas a pagar', 'urlName' => 'contasapagar'),
+                    1 => array('name' => 'Contas a receber', 'urlName' => 'contasareceber'))
+            )
+        ];
+        $this->load->helper('html');
+        $this->load->helper('url');
+        
+        $data['controllerName'] = $this->router->fetch_class();
+        $this->load->view('home/index', $data);
+        $this->load->view($data['controllerName'] . '/' . $data['controllerName'] . 'add', $data);
+        $this->load->view('home/footer', $data);
+    }
 
-	/**
-	 * Get the CI singleton
-	 *
-	 * @static
-	 * @return	object
-	 */
-	public static function &get_instance()
-	{
-		return self::$instance;
-	}
+    // --------------------------------------------------------------------
+
+    /**
+     * Get the CI singleton
+     *
+     * @static
+     * @return	object
+     */
+    public static function &get_instance() {
+        return self::$instance;
+    }
 
 }
