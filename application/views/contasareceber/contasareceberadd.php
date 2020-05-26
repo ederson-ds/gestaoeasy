@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group required">
-                            <label>Descrição do Pagamento</label>
+                            <label>Descrição do recebimento</label>
                             <input type="text" value="<?php echo $conta->descricao ?>" autocomplete="off" name="descricao" class="form-control" required>
                         </div>
                     </div>

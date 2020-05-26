@@ -93,8 +93,11 @@ class CI_Controller {
     public function indexview($data = null) {
         $data['pages'] = [
             0 => array(0 => 'Financeiro',
-                'subpages' => array(0 => array('name' => 'Contas a pagar', 'urlName' => 'contasapagar'),
-                    1 => array('name' => 'Contas a receber', 'urlName' => 'contasareceber'))
+                'subpages' => array(
+                    0 => array('name' => 'Contas a pagar', 'urlName' => 'contasapagar'),
+                    1 => array('name' => 'Contas a receber', 'urlName' => 'contasareceber'),
+                    2 => array('name' => 'Conta bancária', 'urlName' => 'contabancaria')
+                    )
             )
         ];
         $this->load->helper('html');
@@ -109,8 +112,11 @@ class CI_Controller {
     public function createview($data = null) {
         $data['pages'] = [
             0 => array(0 => 'Financeiro',
-                'subpages' => array(0 => array('name' => 'Contas a pagar', 'urlName' => 'contasapagar'),
-                    1 => array('name' => 'Contas a receber', 'urlName' => 'contasareceber'))
+                'subpages' => array(
+                    0 => array('name' => 'Contas a pagar', 'urlName' => 'contasapagar'),
+                    1 => array('name' => 'Contas a receber', 'urlName' => 'contasareceber'),
+                    2 => array('name' => 'Conta bancária', 'urlName' => 'contabancaria')
+                    )
             )
         ];
         $this->load->helper('html');

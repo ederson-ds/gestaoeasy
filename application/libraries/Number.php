@@ -5,6 +5,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Number {
 
     public static function numberToFloat($value) {
+        if (!$value)
+            return null;
         return str_replace(",", ".", str_replace(".", "", $value));
     }
 

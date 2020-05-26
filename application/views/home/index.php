@@ -29,6 +29,20 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.pt-BR.min.js"></script>
         <!-- jQuery Mask Plugin -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+        <!-- Select2 -->
+        <link rel="stylesheet" href="<?php echo base_url() ?>plugins/select2/css/select2.min.css">
+        <link rel="stylesheet" href="<?php echo base_url() ?>plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+        <script src="<?php echo base_url() ?>plugins/select2/js/select2.full.min.js"></script>
+        <style>
+            form .required label:after {
+                color: #F00;
+                content: '*';
+                display: inline;
+            }
+            .money {
+                text-align: right;
+            }
+        </style>
     </head>
     <body class="hold-transition sidebar-mini">
         <!-- Site wrapper -->

@@ -1,6 +1,6 @@
 <?php
 
-class Contasapagar_model extends CI_Model {
+class Contasareceber_model extends CI_Model {
 
     public $descricao;
     public $vencimento;
@@ -10,18 +10,18 @@ class Contasapagar_model extends CI_Model {
     public $contabancaria_id;
 
     public function get($id) {
-        return R::load('contasapagar', $id);
+        return R::load('contasareceber', $id);
     }
 
     public function get_all($pesquisar = null) {
         if ($pesquisar) {
-            return R::find('contasapagar');
+            return R::find('contasareceber');
             /* $this->db->select('*');
               $this->db->from('fios');
               $this->db->like("nome", $pesquisar);
               $query = $this->db->get(); */
         } else {
-            return R::find('contasapagar');
+            return R::find('contasareceber');
             /* $query = $this->db->get('fios'); */
         }
 
@@ -39,30 +39,30 @@ class Contasapagar_model extends CI_Model {
             $this->update($id);
             return;
         }
-        $contasapagar = R::dispense('contasapagar');
-        $contasapagar->descricao = $this->descricao;
-        $contasapagar->vencimento = $this->vencimento;
-        $contasapagar->valorbruto = $this->valorbruto;
-        $contasapagar->juros = $this->juros;
-        $contasapagar->desconto = $this->desconto;
-        $contasapagar->contabancaria_id = $this->contabancaria_id;
-        R::store($contasapagar);
+        $contasareceber = R::dispense('contasareceber');
+        $contasareceber->descricao = $this->descricao;
+        $contasareceber->vencimento = $this->vencimento;
+        $contasareceber->valorbruto = $this->valorbruto;
+        $contasareceber->juros = $this->juros;
+        $contasareceber->desconto = $this->desconto;
+        $contasareceber->contabancaria_id = $this->contabancaria_id;
+        R::store($contasareceber);
     }
 
     public function update($id) {
-        $contasapagar = R::load('contasapagar', $id);
-        $contasapagar->descricao = $this->descricao;
-        $contasapagar->vencimento = $this->vencimento;
-        $contasapagar->valorbruto = $this->valorbruto;
-        $contasapagar->juros = $this->juros;
-        $contasapagar->desconto = $this->desconto;
-        $contasapagar->contabancaria_id = $this->contabancaria_id;
-        R::store($contasapagar);
+        $contasareceber = R::load('contasareceber', $id);
+        $contasareceber->descricao = $this->descricao;
+        $contasareceber->vencimento = $this->vencimento;
+        $contasareceber->valorbruto = $this->valorbruto;
+        $contasareceber->juros = $this->juros;
+        $contasareceber->desconto = $this->desconto;
+        $contasareceber->contabancaria_id = $this->contabancaria_id;
+        R::store($contasareceber);
     }
 
     public function delete($id) {
-        $contasapagar = R::load('contasapagar', $id);
-        R::trash($contasapagar);
+        $contasareceber = R::load('contasareceber', $id);
+        R::trash($contasareceber);
     }
 
 }
