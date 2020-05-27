@@ -54,6 +54,23 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group required">
+                            <label>Forma de pagamento</label>
+                            <select class="form-control select2" name="formadepagamento_id" style="width: 100%;" required>
+                                <option value="">Selecione uma opção</option>
+                                <?php foreach ($formadepagamentos as $formpagamento) { ?>
+                                    <option <?php
+                                    if ($conta->formadepagamento_id == $formpagamento->id) {
+                                        echo 'selected="selected"';
+                                    }
+                                    ?> value="<?php echo $formpagamento->id ?>"><?php echo $formpagamento->nome ?></option>
+                                    <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- /.card-body -->
             <div class="card-footer">

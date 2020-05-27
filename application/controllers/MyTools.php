@@ -12,6 +12,7 @@ class MyTools extends CI_Controller {
         $contasapagar->juros = 10.34;
         $contasapagar->desconto = 10.34;
         $contasapagar->contabancaria = R::load('contabancaria', 1);
+        $contasapagar->formadepagamento = R::load('formadepagamento', 1);
         R::store($contasapagar);
     }
 

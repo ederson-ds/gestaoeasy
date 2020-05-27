@@ -8,6 +8,7 @@ class Contasareceber_model extends CI_Model {
     public $juros;
     public $desconto;
     public $contabancaria_id;
+    public $formadepagamento_id;
 
     public function get($id) {
         return R::load('contasareceber', $id);
@@ -35,6 +36,7 @@ class Contasareceber_model extends CI_Model {
         $this->juros = Number::numberToFloat($this->input->post('juros'));
         $this->desconto = Number::numberToFloat($this->input->post('desconto'));
         $this->contabancaria_id = (int) $this->input->post('contabancaria_id');
+        $this->formadepagamento_id = (int) $this->input->post('formadepagamento_id');
         if ($id) {
             $this->update($id);
             return;
@@ -46,6 +48,7 @@ class Contasareceber_model extends CI_Model {
         $contasareceber->juros = $this->juros;
         $contasareceber->desconto = $this->desconto;
         $contasareceber->contabancaria_id = $this->contabancaria_id;
+        $contasareceber->formadepagamento_id = $this->formadepagamento_id;
         R::store($contasareceber);
     }
 
@@ -57,6 +60,7 @@ class Contasareceber_model extends CI_Model {
         $contasareceber->juros = $this->juros;
         $contasareceber->desconto = $this->desconto;
         $contasareceber->contabancaria_id = $this->contabancaria_id;
+        $contasareceber->formadepagamento_id = $this->formadepagamento_id;
         R::store($contasareceber);
     }
 

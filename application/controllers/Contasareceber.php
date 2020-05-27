@@ -14,8 +14,10 @@ class Contasareceber extends CI_Controller {
     public function create($id = 0) {
         $this->load->model('Contasareceber_model');
         $this->load->model('Contabancaria_model');
+        $this->load->model('Formadepagamento_model');
         $data['conta'] = $this->Contasareceber_model->get($id);
         $data['contasbancarias'] = $this->Contabancaria_model->get_all();
+        $data['formadepagamentos'] = $this->Formadepagamento_model->get_all();
         
         if ($this->input->post()) {
             $this->Contasareceber_model->insert($id);

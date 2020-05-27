@@ -96,7 +96,8 @@ class CI_Controller {
                 'subpages' => array(
                     0 => array('name' => 'Contas a pagar', 'urlName' => 'contasapagar'),
                     1 => array('name' => 'Contas a receber', 'urlName' => 'contasareceber'),
-                    2 => array('name' => 'Conta bancária', 'urlName' => 'contabancaria')
+                    2 => array('name' => 'Conta bancária', 'urlName' => 'contabancaria'),
+                    3 => array('name' => 'Forma de pagamento', 'urlName' => 'formadepagamento')
                     )
             )
         ];
@@ -115,7 +116,8 @@ class CI_Controller {
                 'subpages' => array(
                     0 => array('name' => 'Contas a pagar', 'urlName' => 'contasapagar'),
                     1 => array('name' => 'Contas a receber', 'urlName' => 'contasareceber'),
-                    2 => array('name' => 'Conta bancária', 'urlName' => 'contabancaria')
+                    2 => array('name' => 'Conta bancária', 'urlName' => 'contabancaria'),
+                    3 => array('name' => 'Forma de pagamento', 'urlName' => 'formadepagamento')
                     )
             )
         ];
