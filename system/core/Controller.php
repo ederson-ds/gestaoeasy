@@ -94,10 +94,10 @@ class CI_Controller {
         $data['pages'] = [
             0 => array(0 => 'Financeiro',
                 'subpages' => array(
-                    0 => array('name' => 'Contas a pagar', 'urlName' => 'contasapagar'),
-                    1 => array('name' => 'Contas a receber', 'urlName' => 'contasareceber'),
-                    2 => array('name' => 'Conta bancária', 'urlName' => 'contabancaria'),
-                    3 => array('name' => 'Forma de pagamento', 'urlName' => 'formadepagamento')
+                    0 => array('name' => 'Contas a pagar', 'urlName' => 'contasapagar', 'icon' => 'fas fa-chart-line'),
+                    1 => array('name' => 'Contas a receber', 'urlName' => 'contasareceber', 'icon' => 'fas fa-chart-line'),
+                    2 => array('name' => 'Contas bancárias', 'urlName' => 'contabancaria', 'icon' => 'fas fa-piggy-bank'),
+                    3 => array('name' => 'Formas de pagamento', 'urlName' => 'formadepagamento', 'icon' => 'far fa-money-bill-alt')
                     )
             )
         ];
@@ -114,10 +114,10 @@ class CI_Controller {
         $data['pages'] = [
             0 => array(0 => 'Financeiro',
                 'subpages' => array(
-                    0 => array('name' => 'Contas a pagar', 'urlName' => 'contasapagar'),
-                    1 => array('name' => 'Contas a receber', 'urlName' => 'contasareceber'),
-                    2 => array('name' => 'Conta bancária', 'urlName' => 'contabancaria'),
-                    3 => array('name' => 'Forma de pagamento', 'urlName' => 'formadepagamento')
+                    0 => array('name' => 'Contas a pagar', 'urlName' => 'contasapagar', 'icon' => 'fas fa-chart-line'),
+                    1 => array('name' => 'Contas a receber', 'urlName' => 'contasareceber', 'icon' => 'fas fa-chart-line'),
+                    2 => array('name' => 'Contas bancárias', 'urlName' => 'contabancaria', 'icon' => 'fas fa-piggy-bank'),
+                    3 => array('name' => 'Formas de pagamento', 'urlName' => 'formadepagamento', 'icon' => 'far fa-money-bill-alt')
                     )
             )
         ];

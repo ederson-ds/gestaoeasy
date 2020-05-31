@@ -9,6 +9,7 @@ class Contasareceber_model extends CI_Model {
     public $desconto;
     public $contabancaria_id;
     public $formadepagamento_id;
+    public $datacompensacao;
 
     public function get($id) {
         return R::load('contasareceber', $id);
@@ -37,6 +38,7 @@ class Contasareceber_model extends CI_Model {
         $this->desconto = Number::numberToFloat($this->input->post('desconto'));
         $this->contabancaria_id = (int) $this->input->post('contabancaria_id');
         $this->formadepagamento_id = (int) $this->input->post('formadepagamento_id');
+        $this->datacompensacao = Date::brToDateIso($this->input->post('datacompensacao'));
         if ($id) {
             $this->update($id);
             return;
@@ -49,6 +51,7 @@ class Contasareceber_model extends CI_Model {
         $contasareceber->desconto = $this->desconto;
         $contasareceber->contabancaria_id = $this->contabancaria_id;
         $contasareceber->formadepagamento_id = $this->formadepagamento_id;
+        $contasareceber->datacompensacao = $this->datacompensacao;
         R::store($contasareceber);
     }
 
@@ -61,6 +64,7 @@ class Contasareceber_model extends CI_Model {
         $contasareceber->desconto = $this->desconto;
         $contasareceber->contabancaria_id = $this->contabancaria_id;
         $contasareceber->formadepagamento_id = $this->formadepagamento_id;
+        $contasareceber->datacompensacao = $this->datacompensacao;
         R::store($contasareceber);
     }
 

@@ -45,10 +45,10 @@
                                 <option value="">Selecione uma opção</option>
                                 <?php foreach ($contasbancarias as $contabancaria) { ?>
                                     <option <?php
-                                    if ($conta->contabancaria_id == $contabancaria->id) {
-                                        echo 'selected="selected"';
-                                    }
-                                    ?> value="<?php echo $contabancaria->id ?>"><?php echo $contabancaria->nome ?></option>
+                                            if ($conta->contabancaria_id == $contabancaria->id) {
+                                                echo 'selected="selected"';
+                                            }
+                                            ?> value="<?php echo $contabancaria->id ?>"><?php echo $contabancaria->nome ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -62,12 +62,27 @@
                                 <option value="">Selecione uma opção</option>
                                 <?php foreach ($formadepagamentos as $formpagamento) { ?>
                                     <option <?php
-                                    if ($conta->formadepagamento_id == $formpagamento->id) {
-                                        echo 'selected="selected"';
-                                    }
-                                    ?> value="<?php echo $formpagamento->id ?>"><?php echo $formpagamento->nome ?></option>
-                                    <?php } ?>
+                                            if ($conta->formadepagamento_id == $formpagamento->id) {
+                                                echo 'selected="selected"';
+                                            }
+                                            ?> value="<?php echo $formpagamento->id ?>"><?php echo $formpagamento->nome ?></option>
+                                <?php } ?>
                             </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Recebimento quitado</label>
+                            <select class="form-control" id="recebimentoquitado" style="width: 100%;">
+                                <option value="1">Sim</option>
+                                <option value="0" selected="selected">Não</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Data de compensação</label>
+                            <input type="text" value="<?php echo Date::isoToDateBR($conta->datacompensacao) ?>" autocomplete="off" name="datacompensacao" class="form-control datepicker" disabled required>
                         </div>
                     </div>
                 </div>
@@ -87,5 +102,29 @@
 <script>
     $('.select2').select2({
         theme: 'bootstrap4'
-    })
+    });
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = dd + '/' + mm + '/' + yyyy;
+    $("#recebimentoquitado").change(function() {
+        if ($(this).val() == "1") {
+            $('input[name="datacompensacao"]').prop("disabled", false);
+            $('input[name="datacompensacao"]').parent().addClass("required");
+            $('input[name="datacompensacao"]').val(today);
+            $('input[name="datacompensacao"]').focus();
+        } else {
+            $('input[name="datacompensacao"]').prop("disabled", true);
+            $('input[name="datacompensacao"]').parent().removeClass("required");
+            $('input[name="datacompensacao"]').val("");
+        }
+    });
+
+    $('input[name="datacompensacao"]').focusout(function() {
+        if ($(this).val() == "") {
+            $(this).val(today);
+        }
+    });
 </script>

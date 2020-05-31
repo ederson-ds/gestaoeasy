@@ -84,7 +84,7 @@
                                         <?php foreach ($value['subpages'] as $value) { ?>
                                             <li class="nav-item">
                                                 <a href="<?php echo base_url() . ($value['urlName']) ?>" class="nav-link">
-                                                    <i class="far fa-circle nav-icon"></i>
+                                                    <i class="<?php echo $value['icon'] ?> nav-icon"></i>
                                                     <p><?php echo ($value['name']) ?></p>
                                                 </a>
                                             </li>

@@ -13,6 +13,9 @@ class Date {
     }
 
     public static function brToDateIso($dateBr) {
+        if(!$dateBr) {
+            return null;
+        }
         $ano = substr($dateBr, 6);
         $mes = substr($dateBr, 3, -5);
         $dia = substr($dateBr, 0, -8);
