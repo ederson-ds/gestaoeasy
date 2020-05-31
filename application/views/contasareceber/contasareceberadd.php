@@ -127,4 +127,10 @@
             $(this).val(today);
         }
     });
+
+    if ($('input[name="datacompensacao"]').val() != "") {
+        $("#recebimentoquitado").val("1");
+        $('input[name="datacompensacao"]').prop("disabled", false);
+        $('input[name="datacompensacao"]').parent().addClass("required");
+    }
 </script>
