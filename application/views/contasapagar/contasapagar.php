@@ -8,10 +8,9 @@
                 <thead>
                     <tr>
                         <th>Descrição</th>
-                        <th>Vencimento</th>
-                        <th>Valor Bruto</th>
-                        <th>Juros</th>
-                        <th>Desconto</th>
+                        <th>Data</th>
+                        <th>Valor</th>
+                        <th style="text-align: center;">Situação</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -19,10 +18,35 @@
                     <?php foreach ($contasapagar as $conta) { ?>
                         <tr>
                             <td><?php echo $conta->descricao ?></td>
-                            <td><?php echo Date::isoToDateBR($conta->vencimento) ?></td>
-                            <td><?php echo Number::floatToNumber($conta->valorbruto) ?></td>
-                            <td><?php echo Number::floatToNumber($conta->juros) ?></td>
-                            <td><?php echo Number::floatToNumber($conta->desconto) ?></td>
+                            <td>
+                                <?php
+
+                                if ($conta->datacompensacao) {
+                                    echo Date::isoToDateBR($conta->datacompensacao);
+                                } else {
+                                    echo Date::isoToDateBR($conta->vencimento);
+                                }
+
+                                ?>
+                            </td>
+                            <td><?php echo Number::floatToNumber($conta->valorbruto + $conta->juros - $conta->desconto) ?></td>
+                            <td style="text-align: center;">
+                                <?php
+
+                                $currentDate =  strtotime(date("Y-m-d"));
+                                $vencimento =  strtotime($conta->vencimento);
+                                $datacompensacao =  strtotime($conta->datacompensacao);
+
+                                if ($currentDate <= $datacompensacao) {
+                                    echo '<span class="badge badge-success">Quitado</span>';
+                                } else if ($currentDate > $vencimento) {
+                                    echo '<span class="badge badge-danger">Atrasado</span>';
+                                } else {
+                                    echo '<span class="badge badge-info">Em aberto</span>';
+                                }
+
+                                ?>
+                            </td>
                             <td>
                                 <a href="<?php echo base_url() . $controllerName . "/create/" . $conta->id ?>" class="btn btn-default">
                                     <i class="fas fa-edit"></i>
@@ -67,10 +91,10 @@
     </div>
 </div>
 
-<script>   
-    $(".excluirBtn").click(function () {
-        var controllerName = <?php echo '"'.$controllerName.'"' ?>;
-        var baseUrl = <?php echo '"'.base_url().'"' ?>;
+<script>
+    $(".excluirBtn").click(function() {
+        var controllerName = <?php echo '"' . $controllerName . '"' ?>;
+        var baseUrl = <?php echo '"' . base_url() . '"' ?>;
         $("#excluirBtn").attr("href", baseUrl + controllerName + "/delete/" + $(this).data('id'));
     });
 </script>

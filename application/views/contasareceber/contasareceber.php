@@ -36,7 +36,7 @@
                                 $datacompensacao =  strtotime($conta->datacompensacao);
 
                                 if ($currentDate <= $datacompensacao) {
-                                    echo '<span class="badge badge-success">Confirmado</span>';
+                                    echo '<span class="badge badge-success">Quitado</span>';
                                 } else if ($currentDate > $vencimento) {
                                     echo '<span class="badge badge-danger">Atrasado</span>';
                                 } else {
