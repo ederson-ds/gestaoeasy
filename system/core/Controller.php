@@ -92,7 +92,7 @@ class CI_Controller {
 
     public function indexview($data = null) {
         $data['pages'] = [
-            0 => array(0 => 'Financeiro',
+            0 => array(0 => array('name' => 'Financeiro', 'icon' => 'fas fa-dollar-sign'),
                 'subpages' => array(
                     0 => array('name' => 'Contas a pagar', 'urlName' => 'contasapagar', 'icon' => 'fas fa-chart-line'),
                     1 => array('name' => 'Contas a receber', 'urlName' => 'contasareceber', 'icon' => 'fas fa-chart-line'),
@@ -112,7 +112,7 @@ class CI_Controller {
     
     public function createview($data = null) {
         $data['pages'] = [
-            0 => array(0 => 'Financeiro',
+            0 => array(0 => array('name' => 'Financeiro', 'icon' => 'fas fa-dollar-sign'),
                 'subpages' => array(
                     0 => array('name' => 'Contas a pagar', 'urlName' => 'contasapagar', 'icon' => 'fas fa-chart-line'),
                     1 => array('name' => 'Contas a receber', 'urlName' => 'contasareceber', 'icon' => 'fas fa-chart-line'),

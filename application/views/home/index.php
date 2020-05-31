@@ -67,16 +67,15 @@
 
                 <!-- Sidebar -->
                 <div class="sidebar">
-
                     <!-- Sidebar Menu -->
                     <?php foreach ($pages as $value) { ?>
                         <nav class="mt-2">
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                                 <li class="nav-item has-treeview menu-open">
                                     <a href="#" class="nav-link active">
-                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        <i class="nav-icon <?php echo $value[0]['icon'] ?>"></i>
                                         <p>
-                                            <?php echo ($value[0]) ?>
+                                            <?php echo ($value[0]['name']) ?>
                                             <i class="right fas fa-angle-left"></i>
                                         </p>
                                     </a>
