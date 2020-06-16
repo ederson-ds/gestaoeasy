@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('date', 'number');
+$autoload['libraries'] = array('date', 'number', 'StringFormatter');
 
 /*
 | -------------------------------------------------------------------

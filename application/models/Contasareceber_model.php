@@ -31,7 +31,7 @@ class Contasareceber_model extends CI_Model {
     }
 
     public function insert($id) {
-        $this->descricao = $this->input->post('descricao');
+        $this->descricao = StringFormatter::removeSymbols($this->input->post('descricao'));
         $this->vencimento = Date::brToDateIso($this->input->post('vencimento'));
         $this->valorbruto = Number::numberToFloat($this->input->post('valorbruto'));
         $this->juros = Number::numberToFloat($this->input->post('juros'));

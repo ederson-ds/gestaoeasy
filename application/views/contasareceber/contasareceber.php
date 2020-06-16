@@ -4,7 +4,7 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped">
+            <table id="table" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Descrição</th>
@@ -33,9 +33,9 @@
 
                                 $currentDate =  strtotime(date("Y-m-d"));
                                 $vencimento =  strtotime($conta->vencimento);
-                                $datacompensacao =  strtotime($conta->datacompensacao);
+                                $datacompensacao = $conta->datacompensacao;
 
-                                if ($currentDate <= $datacompensacao) {
+                                if ($datacompensacao) {
                                     echo '<span class="badge badge-success">Quitado</span>';
                                 } else if ($currentDate > $vencimento) {
                                     echo '<span class="badge badge-danger">Atrasado</span>';
@@ -90,6 +90,14 @@
 </div>
 
 <script>
+    $(document).ready(function() {
+        $('#table').DataTable({
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Portuguese-Brasil.json"
+            }
+        });
+    });
+
     $(".excluirBtn").click(function() {
         var controllerName = <?php echo '"' . $controllerName . '"' ?>;
         var baseUrl = <?php echo '"' . base_url() . '"' ?>;

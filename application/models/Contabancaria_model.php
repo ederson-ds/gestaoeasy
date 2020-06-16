@@ -26,7 +26,7 @@ class Contabancaria_model extends CI_Model {
     }
 
     public function insert($id) {
-        $this->nome = $this->input->post('nome');
+        $this->nome = StringFormatter::removeSymbols($this->input->post('nome'));
         $this->saldoinicial = Number::numberToFloat($this->input->post('saldoinicial'));
         $this->datasaldo = Date::brToDateIso($this->input->post('datasaldo'));
         if ($id) {

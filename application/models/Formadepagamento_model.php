@@ -17,7 +17,7 @@ class Formadepagamento_model extends CI_Model {
     }
 
     public function insert($id) {
-        $this->nome = $this->input->post('nome');
+        $this->nome = StringFormatter::removeSymbols($this->input->post('nome'));
         if ($id) {
             $this->update($id);
             return;

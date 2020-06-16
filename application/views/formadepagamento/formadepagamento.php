@@ -4,7 +4,7 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped">
+            <table id="table" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Forma de pagamento</th>
@@ -59,7 +59,15 @@
     </div>
 </div>
 
-<script>   
+<script>
+    $(document).ready(function() {
+        $('#table').DataTable({
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Portuguese-Brasil.json"
+            }
+        });
+    });
+
     $(".excluirBtn").click(function () {
         var controllerName = <?php echo '"'.$controllerName.'"' ?>;
         var baseUrl = <?php echo '"'.base_url().'"' ?>;

@@ -33,6 +33,9 @@
         <link rel="stylesheet" href="<?php echo base_url() ?>plugins/select2/css/select2.min.css">
         <link rel="stylesheet" href="<?php echo base_url() ?>plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
         <script src="<?php echo base_url() ?>plugins/select2/js/select2.full.min.js"></script>
+        <!-- DataTables -->
+        <link rel="stylesheet" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+        <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
         <style>
             form .required label:after {
                 color: #F00;
